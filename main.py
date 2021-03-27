@@ -146,9 +146,12 @@ if __name__ == "__main__":
     randomSeedText = extraScreenFont.render("Random Seeds", 1, (255, 0, 0))
     pausedText = largeTitleScreenFont.render("--- Paused ---", 1, (255, 0, 0))
 
-    highScoreFile = open(filePath+"/resources/text/highscore.txt", 'r')
-    highScore = highScoreFile.readline().split("|")
-    highScoreFile.close()
+    try:
+        highScoreFile = open(filePath+"/resources/text/highscore.txt", 'r')
+        highScore = highScoreFile.readline().split("|")
+        highScoreFile.close()
+    except:
+        highScore = ["0", "aaaaa"]
 
     pausedRect = getCoordinatesToCenterTextMiddle(largeTitleScreenFont.size("--- Paused ---"), [320, 320])
     recentGamesLocation = getCoordinatesToCenterTextMiddle(extraScreenFont.size("Recent Games"), [windowSize[0]/2, 170])

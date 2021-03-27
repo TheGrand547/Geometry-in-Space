@@ -123,7 +123,11 @@ def listSplit(listToSplit):
 def readFromFile(filename=""):
     if filename != "":
         toReturn = []
-        fileToReadFrom = open(filename, 'r')
+        try:
+            fileToReadFrom = open(filename, 'r')
+        except:
+            return ["aaaaa|0|Loss", "aaaaa|0|Loss"]
+        
         while True:
             try:
                 newLine = fileToReadFrom.readline()
