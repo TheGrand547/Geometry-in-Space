@@ -1,0 +1,20 @@
+Highest Difficulty Seeds
+zeszn with a float of 1.0
+zesyn with a float of 1.0
+zesxn with a float of 1.0
+zeswn with a float of 1.0
+zesvn with a float of 1.0
+zesun with a float of 1.0
+zestn with a float of 1.0
+zessn with a float of 1.0
+zesrn with a float of 1.0
+Lowest Difficulty Seeds
+mewbr with a float of 0.307692307692
+mewcr with a float of 0.307692307692
+mewdr with a float of 0.307692307692
+mewer with a float of 0.307692307692
+mewfr with a float of 0.307692307692
+mewgr with a float of 0.307692307692
+mewhr with a float of 0.307692307692
+mewir with a float of 0.307692307692
+mewjr with a float of 0.307692307692
