@@ -7,7 +7,7 @@ from cmath import exp
 def writeToFileFromList(listToRightFrom, filename):
     openedFile = open(filename, 'w')
     for item in listToRightFrom:
-        openedFile.write(item)
+        openedFile.write(item + "\n")
     openedFile.close()
 
 
@@ -123,11 +123,16 @@ def listSplit(listToSplit):
 def readFromFile(filename=""):
     if filename != "":
         toReturn = []
-        fileToReadFrom = open(filename, 'r')
+        try:
+            fileToReadFrom = open(filename, 'r')
+        except:
+            return ["aaaaa|0|Loss", "aaaaa|0|Loss", "aaaaa|0|Loss"]
+        
         while True:
             try:
                 newLine = fileToReadFrom.readline()
-                if newLine.strip() == "":
+                newLine = newLine.strip()
+                if newLine == "":
                     break
                 toReturn.append(newLine)
             except EOFError:

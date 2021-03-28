@@ -146,9 +146,12 @@ if __name__ == "__main__":
     randomSeedText = extraScreenFont.render("Random Seeds", 1, (255, 0, 0))
     pausedText = largeTitleScreenFont.render("--- Paused ---", 1, (255, 0, 0))
 
-    highScoreFile = open(filePath+"/resources/text/highscore.txt", 'r')
-    highScore = highScoreFile.readline().split("|")
-    highScoreFile.close()
+    try:
+        highScoreFile = open(filePath+"/resources/text/highscore.txt", 'r')
+        highScore = highScoreFile.readline().replace("\n", "").split("|")
+        highScoreFile.close()
+    except:
+        highScore = ["0", "aaaaa"]
 
     pausedRect = getCoordinatesToCenterTextMiddle(largeTitleScreenFont.size("--- Paused ---"), [320, 320])
     recentGamesLocation = getCoordinatesToCenterTextMiddle(extraScreenFont.size("Recent Games"), [windowSize[0]/2, 170])
@@ -190,6 +193,7 @@ if __name__ == "__main__":
     """Main Game Loop"""
     while True:
         if location == 0:  # Main Menu
+            endGameLoaded = False
             screen.fill((0, 0, 0))
             for event in pygame.event.get():
                 if event.type == QUIT:
@@ -563,11 +567,12 @@ if __name__ == "__main__":
                 listOfCurrentButtons = []
                 listOfTablets = []
         elif location == 6:   # End of game screen, regardless of win or loss
-            if not endGameLoaded:  # Add to the last 3 games list
+            # Add to the last 3 games list
+            if not endGameLoaded:  
                 endGameLoaded = not endGameLoaded
                 lastFewGames = readFromFile(filePath + "/resources/text/previousGames.rsc")
                 lastFewGames.pop()
-                lastFewGames.insert(0, "|".join(endOfGameInfo)+"\n")
+                lastFewGames.insert(0, "|".join(endOfGameInfo))
                 writeToFileFromList(lastFewGames, filePath + "/resources/text/previousGames.rsc")
                 if endOfGameMessages[-1] == "NEW HIGH SCORE!!!":
                     writeToFileFromList([endOfGameInfo[2] + "|" + endOfGameInfo[0]],
